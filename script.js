@@ -77,7 +77,7 @@ const speakText = (text) => {
 
 
     const speech = new SpeechSynthesisUtterance(cleanedText);
-    speech.lang = 'en-US'; // Customize language as needed
+    speech.lang = 'en-GB'; // Customize language as needed
     speech.rate = 1; // Set speaking rate
     speech.pitch = 1; // Set pitch level
     speechSynthesis.speak(speech);
@@ -306,4 +306,29 @@ typingForm.addEventListener("submit", (e) => {
 
 loadDataFromLocalstorage();
 
+
+
+
+
+// Function to speak the welcome message with a "Jarvis" sound effect
+function speakWelcomeMessage() {
+  const welcomeText = "Hello there! How can I help you today?";
+  const speech = new SpeechSynthesisUtterance(welcomeText);
+  speech.lang = 'en-GB'; // Set British English accent (can be adjusted)
+  speech.rate = 0.9; // Slightly slower for clarity
+  speech.pitch = 0.6; // Lower pitch for a robotic tone
+
+  // Try selecting a voice that sounds more robotic or "Jarvis"-like
+  const voices = window.speechSynthesis.getVoices();
+  speech.voice = voices.find(voice => voice.name.includes("Daniel") || voice.name.includes("UK English Male")) || voices[0];
+  
+  // Speak the welcome message
+  speechSynthesis.speak(speech);
+}
+
+// Trigger welcome message on page load
+window.onload = () => {
+  speakWelcomeMessage();
+  loadDataFromLocalstorage(); // Ensure previous data and theme are loaded
+};
 

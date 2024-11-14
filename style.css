@@ -267,14 +267,25 @@ body.hide-header .header {
   height: 35px;
   width: 35px;
   border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   background: none;
   font-size: 1.25rem;
-  margin-left: 3.5rem;
   visibility: hidden;
 }
+
+
+/* Apply margin to the copy button to shift the pair to the right */
+.chat-list .message .icon:first-of-type {
+  margin-left: 4rem; /* Adjust this value to move both buttons to the right */
+}
+
+/* Adjust gap between the two buttons */
+.chat-list .message .icon + .icon {
+  margin-left: 0.5rem; /* Set a smaller margin between the buttons */
+}
+
 
 .chat-list .message .icon.hide {
   visibility: hidden;
